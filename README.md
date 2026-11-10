@@ -62,5 +62,5 @@
 ## Contenu de la seed 
 - 5 fichiers
 - 3 dossiers
-- 3 collections dont "récentsé et "favoris" qui sont des dossiers spéciaux et non supprimable
+- 3 collections dont "récents" et "favoris" qui sont des dossiers spéciaux et non supprimable
 - 10 versions : lier plusieurs versions à un même fichier ou dossier
