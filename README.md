@@ -7,11 +7,11 @@
 
 ## Stack technique
 
-    -SQLite
-    -JS
-    -HTML
-    -CSS
-    -MINIO
+    - SQLite
+    - JS
+    - HTML
+    - CSS (Tailwind)
+    - MinIO
 
 
 ## Prérequis
@@ -58,3 +58,9 @@
 | Relation 1-N 2 |  File -> directory  |
 | Relation N-N   |  File -> Collection |
 | Seed           |                     |
+
+## Contenu de la seed 
+- 5 fichiers
+- 3 dossiers
+- 3 collections dont "récentsé et "favoris" qui sont des dossiers spéciaux et non supprimable
+- 10 versions : lier plusieurs versions à un même fichier ou dossier
