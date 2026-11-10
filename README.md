@@ -1,7 +1,17 @@
 ## Présentation
 
+    The File Manager est un gestionnaire de fichier pour parcourir vos fichiers.
+    elle permet de creer des dossiers et de stocker des fichiers.
+    les fichiers et les dossiers peuvent porter des étiquettes prédéfini ou créer par l'utilisateur.
+    des tags "récents" et "favoris" sont prédéfini et mis en avant dés l'arrivé au menu.
 
 ## Stack technique
+
+    -SQLite
+    -JS
+    -HTML
+    -CSS
+    -MINIO
 
 
 ## Prérequis
@@ -40,11 +50,11 @@
 | N3       |                      |
 | N4       |                      |
 
-| Élément        | Valeur |
-|----------------|--------|
-| Entité A       |        |
-| Entité B       |        |
-| Relation 1-N 1 |        |
-| Relation 1-N 2 |        |
-| Relation N-N   |        |
-| Seed           |        |
+| Élément        | Valeur              |
+|----------------|---------------------|
+| Entité A       |  File               |
+| Entité B       |  Directory          |
+| Relation 1-N 1 |  Versions -> File   |
+| Relation 1-N 2 |  File -> directory  |
+| Relation N-N   |  File -> Collection |
+| Seed           |                     |
