@@ -1,17 +1,20 @@
+# The File Manager
+
 ## Présentation
 
-    The File Manager est un gestionnaire de fichier pour parcourir vos fichiers.
-    elle permet de creer des dossiers et de stocker des fichiers.
-    les fichiers et les dossiers peuvent porter des étiquettes prédéfini ou créer par l'utilisateur.
-    des tags "récents" et "favoris" sont prédéfini et mis en avant dés l'arrivé au menu.
+    The File Manager est un gestionnaire de fichiers pour parcourir vos fichiers.
+    Il permet de créer des dossiers et de stocker des fichiers.
+    Les fichiers et les dossiers peuvent porter des étiquettes prédéfinies ou créées par l'utilisateur.
+    Des étiquettes "récents" et "favoris" sont prédéfinies et mises en avant dès l'arrivée sur l'accueil.
 
 ## Stack technique
 
-    - SQLite
-    - JS
-    - HTML
-    - CSS (Tailwind)
-    - MinIO
+- SQLite
+- JavaScript
+- Node.js (Express)
+- HTML
+- CSS (Tailwind)
+- SeaweedFS
 
 
 ## Prérequis
