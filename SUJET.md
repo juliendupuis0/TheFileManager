@@ -59,6 +59,3 @@
 - 5 dossiers
 - 5 collections : "récents" et "favoris" qui sont spéciales et non supprimables et trois collections classiques
 - 10 versions pour que plusieurs versions soient lié à un même fichier ou dossier
-
-
-

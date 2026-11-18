@@ -19,9 +19,61 @@
 
 ## Prérequis
 
+Node.js
+Docker
+Docker Compose
 
-## Lancement
+## Lancement du projet
 
+### 1. Configuration de l'environnement
+
+Copiez le fichier `.env.example` pour créer votre fichier de configuration :
+
+```bash
+cp .env.example .env
+```
+
+Modifiez les variables d'environnement dans `.env` si nécessaire, notamment les clés d'accès.
+
+### 2. Démarrage du serveur S3
+
+Lancez le service S3 via Docker Compose, assurez-vous que docker est démarré :
+
+```bash
+docker compose up -d
+```
+
+### 3. Installation des dépendances
+
+Installez les dépendances du projet :
+
+```bash
+npm install
+```
+
+### 4. Création de la base de données
+
+Générez la base de donnée avec drizzle :
+
+```bash
+npx drizzle-kit migrate
+```
+
+### 5. Démarrage du serveur
+
+Choisissez le mode de démarrage souhaité :
+
+**Mode développement** — avec rechargement automatique :
+
+```bash
+npm run dev
+```
+
+**Mode production** :
+
+```bash
+npm start
+```
 
 ## Comptes de test
 
