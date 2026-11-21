@@ -1,7 +1,7 @@
 {
   "name": "thefilemanager",
   "version": "1.0.0",
-  "description": "The File Manager est un gestionnaire de fichier pour parcourir vos fichiers.     elle permet de creer des dossiers et de stocker des fichiers.     les fichiers et les dossiers peuvent porter des étiquettes prédéfini ou créer par l'utilisateur.     des tags \"récents\" et \"favoris\" sont prédéfini et mis en avant dés l'arrivé au menu.",
+  "description": "The File Manager aka TFM is a file management tool that allows users to browse their files, create folders, and store documents. Files and folders can be assigned predefined tags or custom tags created by the user. The \"Recent\" and \"Favorites\" tags are predefined and prominently displayed upon entering the main menu.",
   "homepage": "https://github.com/juliendupuis0/TheFileManager#readme",
   "bugs": {
     "url": "https://github.com/juliendupuis0/TheFileManager/issues"
@@ -16,15 +16,26 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch index.js"
+    "start": "concurrently \"npx @tailwindcss/cli -i ./tailwind.css -o ./public/css/tailwind/tailwind.css --minify\" \"node index.js\"",
+    "dev": "concurrently \"nodemon --ext js,json,hbs index.js\" \"npx @tailwindcss/cli -i ./tailwind.css -o ./public/css/tailwind/tailwind.css --watch\" "
+  },
+  "_moduleAliases": {
+    "@": "."
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1171.0",
     "@libsql/client": "^0.18.0",
     "dotenv": "^18.0.10",
     "drizzle-orm": "^0.45.4",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "hbs": "^4.4.0",
+    "module-alias": "^2.3.5"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.11"
+    "@tailwindcss/cli": "^4.3.5",
+    "concurrently": "^10.0.7",
+    "drizzle-kit": "^0.31.11",
+    "nodemon": "^3.1.14",
+    "tailwindcss": "^4.3.5"
   }
 }
