@@ -4,8 +4,9 @@
 
     The File Manager est un gestionnaire de fichiers pour parcourir vos fichiers.
     Il permet de créer des dossiers et de stocker des fichiers.
-    Les fichiers et les dossiers peuvent porter des étiquettes prédéfinies ou créées par l'utilisateur.
-    Des étiquettes "récents" et "favoris" sont prédéfinies et mises en avant dès l'arrivée sur l'accueil.
+    Les fichiers et les dossiers peuvent être rangés dans des collections prédéfinies ou créées par l'utilisateur.
+    Une collection "récents" est prédéfinie et mise en avant dès l'arrivée sur l'accueil.
+    Il est possible d'épingler jusqu'à 5 fichiers ou dossiers et de marquer des collections comme favorites.
 
 ## Stack technique
 
@@ -15,6 +16,8 @@
 - HTML
 - CSS (Tailwind)
 - SeaweedFS
+- Drizzle ORM
+- Docker
 
 
 ## Prérequis
@@ -112,10 +115,12 @@ npm start
 | Relation 1-N 1 |  Versions -> File   |
 | Relation 1-N 2 |  File -> directory  |
 | Relation N-N   |  File -> Collection |
-| Seed           |                     |
+| Seed | 5 fichiers (2 épinglés), 5 dossiers (2 épinglés), 5 collections ("récents" + 4 classiques dont 2 favorites), 10 versions |
 
 ## Contenu de la seed 
 - 5 fichiers
-- 3 dossiers
-- 3 collections dont "récents" et "favoris" qui sont des dossiers spéciaux et non supprimable
-- 10 versions : lier plusieurs versions à un même fichier ou dossier
+- 5 dossiers
+- 5 collections : "récents" est spéciale et non supprimable et 4 collections classiques
+> 2 de ces collections classiques sont en "favoris"
+- 10 versions pour que plusieurs versions soient lié à un même fichier ou dossier
+- 2 fichiers et 2 dossiers épinglés
