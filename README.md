@@ -56,10 +56,11 @@ npm install
 
 ### 4. Création de la base de données
 
-Générez la base de donnée avec drizzle :
+Créez les tables puis remplissez-les avec les données de test :
 
 ```bash
-npx drizzle-kit migrate
+npm run migrate-db
+npm run seed-db
 ```
 
 ### 5. Démarrage du serveur

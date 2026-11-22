@@ -1,5 +1,5 @@
 // model/seed.js : remplit la base avec des données de test.
-// Lancer depuis la RACINE du projet : node model/seed.js
+// Lancer depuis la RACINE du projet : npm run seed
 // (si ton dossier s'appelle db/ au lieu de model/, le fichier marche tel quel)
 //
 // Tous les id sont en autoIncrement : on ne les écrit jamais à la main,
