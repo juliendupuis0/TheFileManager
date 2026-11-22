@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "7e953b67-ab2d-4273-8c60-cadc83e79ecb",
+  "id": "cbf5aa2c-e600-4696-a3e1-575c7eba807f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "directory": {
@@ -9,10 +9,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": true
         },
         "name": {
           "name": "name",
@@ -21,13 +21,12 @@
           "notNull": true,
           "autoincrement": false
         },
-        "date_": {
-          "name": "date_",
+        "date": {
+          "name": "date",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(unixepoch())"
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -41,10 +40,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": true
         },
         "name": {
           "name": "name",
@@ -92,17 +91,16 @@
           "notNull": true,
           "autoincrement": false
         },
-        "date_": {
-          "name": "date_",
+        "date": {
+          "name": "date",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(unixepoch())"
+          "autoincrement": false
         },
-        "id_1": {
-          "name": "id_1",
-          "type": "text",
+        "directoryId": {
+          "name": "directoryId",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -110,12 +108,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "file_id_1_directory_id_fk": {
-          "name": "file_id_1_directory_id_fk",
+        "file_directoryId_directory_id_fk": {
+          "name": "file_directoryId_directory_id_fk",
           "tableFrom": "file",
           "tableTo": "directory",
           "columnsFrom": [
-            "id_1"
+            "directoryId"
           ],
           "columnsTo": [
             "id"
@@ -138,13 +136,12 @@
           "notNull": true,
           "autoincrement": true
         },
-        "date_": {
-          "name": "date_",
+        "date": {
+          "name": "date",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "(unixepoch())"
+          "autoincrement": false
         },
         "type": {
           "name": "type",
@@ -153,15 +150,15 @@
           "notNull": true,
           "autoincrement": false
         },
-        "id_1": {
-          "name": "id_1",
-          "type": "text",
+        "directoryId": {
+          "name": "directoryId",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
-        "id_2": {
-          "name": "id_2",
+        "fileId": {
+          "name": "fileId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
@@ -170,12 +167,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "versions_id_1_directory_id_fk": {
-          "name": "versions_id_1_directory_id_fk",
+        "versions_directoryId_directory_id_fk": {
+          "name": "versions_directoryId_directory_id_fk",
           "tableFrom": "versions",
           "tableTo": "directory",
           "columnsFrom": [
-            "id_1"
+            "directoryId"
           ],
           "columnsTo": [
             "id"
@@ -183,12 +180,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "versions_id_2_file_id_fk": {
-          "name": "versions_id_2_file_id_fk",
+        "versions_fileId_file_id_fk": {
+          "name": "versions_fileId_file_id_fk",
           "tableFrom": "versions",
           "tableTo": "file",
           "columnsFrom": [
-            "id_2"
+            "fileId"
           ],
           "columnsTo": [
             "id"
@@ -204,16 +201,16 @@
     "file_collections": {
       "name": "file_collections",
       "columns": {
-        "id": {
-          "name": "id",
+        "fileId": {
+          "name": "fileId",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "id_1": {
-          "name": "id_1",
-          "type": "text",
+        "collectionId": {
+          "name": "collectionId",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -221,12 +218,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "file_collections_id_file_id_fk": {
-          "name": "file_collections_id_file_id_fk",
+        "file_collections_fileId_file_id_fk": {
+          "name": "file_collections_fileId_file_id_fk",
           "tableFrom": "file_collections",
           "tableTo": "file",
           "columnsFrom": [
-            "id"
+            "fileId"
           ],
           "columnsTo": [
             "id"
@@ -234,12 +231,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "file_collections_id_1_collection_id_fk": {
-          "name": "file_collections_id_1_collection_id_fk",
+        "file_collections_collectionId_collection_id_fk": {
+          "name": "file_collections_collectionId_collection_id_fk",
           "tableFrom": "file_collections",
           "tableTo": "collection",
           "columnsFrom": [
-            "id_1"
+            "collectionId"
           ],
           "columnsTo": [
             "id"
@@ -249,12 +246,12 @@
         }
       },
       "compositePrimaryKeys": {
-        "file_collections_id_id_1_pk": {
+        "file_collections_fileId_collectionId_pk": {
           "columns": [
-            "id",
-            "id_1"
+            "fileId",
+            "collectionId"
           ],
-          "name": "file_collections_id_id_1_pk"
+          "name": "file_collections_fileId_collectionId_pk"
         }
       },
       "uniqueConstraints": {},
@@ -263,16 +260,16 @@
     "directory_collections": {
       "name": "directory_collections",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
+        "directoryId": {
+          "name": "directoryId",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "id_1": {
-          "name": "id_1",
-          "type": "text",
+        "collectionId": {
+          "name": "collectionId",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -280,12 +277,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "directory_collections_id_directory_id_fk": {
-          "name": "directory_collections_id_directory_id_fk",
+        "directory_collections_directoryId_directory_id_fk": {
+          "name": "directory_collections_directoryId_directory_id_fk",
           "tableFrom": "directory_collections",
           "tableTo": "directory",
           "columnsFrom": [
-            "id"
+            "directoryId"
           ],
           "columnsTo": [
             "id"
@@ -293,12 +290,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "directory_collections_id_1_collection_id_fk": {
-          "name": "directory_collections_id_1_collection_id_fk",
+        "directory_collections_collectionId_collection_id_fk": {
+          "name": "directory_collections_collectionId_collection_id_fk",
           "tableFrom": "directory_collections",
           "tableTo": "collection",
           "columnsFrom": [
-            "id_1"
+            "collectionId"
           ],
           "columnsTo": [
             "id"
@@ -308,12 +305,12 @@
         }
       },
       "compositePrimaryKeys": {
-        "directory_collections_id_id_1_pk": {
+        "directory_collections_directoryId_collectionId_pk": {
           "columns": [
-            "id",
-            "id_1"
+            "directoryId",
+            "collectionId"
           ],
-          "name": "directory_collections_id_id_1_pk"
+          "name": "directory_collections_directoryId_collectionId_pk"
         }
       },
       "uniqueConstraints": {},
