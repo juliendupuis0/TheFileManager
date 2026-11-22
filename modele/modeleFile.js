@@ -1,6 +1,6 @@
 const { eq } = require("drizzle-orm");
 const db = require("@/database/db.js");
-const { file, directory, collection, directory_collection, file_collection, versions } = require("@/database/schema.js");
+const { file, directory, collection, directoryCollections, fileCollections, versions } = require("@/database/schema.js");
 
 async function allFiles() {
    return await db.select({id : file.id}).from(file);
