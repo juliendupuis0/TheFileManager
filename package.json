@@ -17,7 +17,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npx @tailwindcss/cli -i ./tailwind.css -o ./public/css/tailwind/tailwind.css --minify\" \"node index.js\"",
-    "dev": "concurrently \"nodemon --ext js,json,hbs index.js\" \"npx @tailwindcss/cli -i ./tailwind.css -o ./public/css/tailwind/tailwind.css --watch\" "
+    "dev": "concurrently \"nodemon --ext js,json,hbs index.js\" \"npx @tailwindcss/cli -i ./tailwind.css -o ./public/css/tailwind/tailwind.css --watch\" ",
+    "migrate-db": "drizzle-kit migrate",
+    "seed-db": "node database/seed.js"
   },
   "_moduleAliases": {
     "@": "."
