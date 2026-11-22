@@ -1,4 +1,3 @@
-const { sql } = require("drizzle-orm");
 const {
     sqliteTable,
     integer,
@@ -6,70 +5,70 @@ const {
     primaryKey,
 } = require("drizzle-orm/sqlite-core");
 
-const directoryTable = sqliteTable("directory", {
-    id: text("id").primaryKey(),
+const directory = sqliteTable("directory", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
     name: text("name").notNull(),
-    date: integer("date_", { mode: "timestamp" })
+    date: integer("date", { mode: "timestamp" })
         .notNull()
-        .default(sql`(unixepoch())`),
+        .$defaultFn(() => new Date()),
 });
 
-const collectionTable = sqliteTable("collection", {
-    id: text("id").primaryKey(),
+const collection = sqliteTable("collection", {
+    id: integer("id").primaryKey({ autoIncrement: true }),
     name: text("name").notNull().unique(),
 });
 
-const fileTable = sqliteTable("file", {
+const file = sqliteTable("file", {
     id: integer("id").primaryKey({ autoIncrement: true }),
     name: text("name").notNull(),
     extension: text("extension").notNull(),
-    date: integer("date_", { mode: "timestamp" })
+    date: integer("date", { mode: "timestamp" })
         .notNull()
-        .default(sql`(unixepoch())`),
-    directoryId: text("id_1").references(() => directoryTable.id),
+        .$defaultFn(() => new Date()),
+    directoryId: integer("directoryId").references(() => directory.id),
 });
 
-const versionsTable = sqliteTable("versions", {
+const versions = sqliteTable("versions", {
     id: integer("id").primaryKey({ autoIncrement: true }),
-    date: integer("date_", { mode: "timestamp" })
+    date: integer("date", { mode: "timestamp" })
         .notNull()
-        .default(sql`(unixepoch())`),
+        .$defaultFn(() => new Date()),
     type: text("type").notNull(),
-    directoryId: text("id_1").references(() => directoryTable.id),
-    fileId: integer("id_2").references(() => fileTable.id),
+    directoryId: integer("directoryId").references(() => directory.id),
+    fileId: integer("fileId").references(() => file.id),
 });
 
-const fileCollectionsTable = sqliteTable(
+const fileCollections = sqliteTable(
     "file_collections",
     {
-        fileId: integer("id")
+        fileId: integer("fileId")
             .notNull()
-            .references(() => fileTable.id),
-        collectionId: text("id_1")
+            .references(() => file.id),
+        collectionId: integer("collectionId")
             .notNull()
-            .references(() => collectionTable.id),
+            .references(() => collection.id),
     },
     (t) => [primaryKey({ columns: [t.fileId, t.collectionId] })],
 );
 
-const directoryCollectionsTable = sqliteTable(
+const directoryCollections = sqliteTable(
     "directory_collections",
     {
-        directoryId: text("id")
+        directoryId: integer("directoryId")
             .notNull()
-            .references(() => directoryTable.id),
-        collectionId: text("id_1")
+            .references(() => directory.id),
+        collectionId: integer("collectionId")
             .notNull()
-            .references(() => collectionTable.id),
+            .references(() => collection.id),
     },
     (t) => [primaryKey({ columns: [t.directoryId, t.collectionId] })],
 );
 
 module.exports = {
-    directoryTable,
-    collectionTable,
-    fileTable,
-    versionsTable,
-    fileCollectionsTable,
-    directoryCollectionsTable,
+    directory,
+    collection,
+    file,
+    versions,
+    fileCollections,
+    directoryCollections,
 };

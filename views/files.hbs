@@ -1,0 +1,11 @@
+<main class="mx-auto max-w-3xl p-6">
+  <h1 class="mb-4 text-2xl font-bold">Mes fichiers</h1>
+
+  <ul class="list-disc pl-6">
+    {{#each files}}
+      <li>{{id}}</li>
+    {{else}}
+      <li class="text-gray-500">Aucun fichier pour le moment.</li>
+    {{/each}}
+  </ul>
+</main>
