@@ -1,7 +1,9 @@
 CREATE TABLE `directory` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`name` text NOT NULL,
-	`date` integer NOT NULL
+	`parentId` integer,
+	`date` integer NOT NULL,
+	FOREIGN KEY (`parentId`) REFERENCES `directory`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `collection` (
@@ -15,8 +17,8 @@ CREATE TABLE `file` (
 	`name` text NOT NULL,
 	`extension` text NOT NULL,
 	`date` integer NOT NULL,
-	`directoryId` integer,
-	FOREIGN KEY (`directoryId`) REFERENCES `directory`(`id`) ON UPDATE no action ON DELETE no action
+	`parentId` integer,
+	FOREIGN KEY (`parentId`) REFERENCES `directory`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `versions` (
