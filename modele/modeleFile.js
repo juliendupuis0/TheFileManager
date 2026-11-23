@@ -7,11 +7,16 @@ async function allFiles() {
 }
 
 async function directoryFiles(dir) {
-    return await db.select({id : file.id}).from(file).innerJoin(directory,eq(file.directoryId,directory.id)).where(eq(file.directoryId,dir));
+    return await db.select({id : file.id}).from(file)
+                .innerJoin(directory,eq(file.directoryId,directory.id))
+                .where(eq(file.directoryId,dir));
 }
 
 async function collectionFile(col) {
-    return await db.select({id : file.id}).from(file).innerJoin(fileCollections,eq(file.id,fileCollections.fileId)).innerJoin(collection,eq(fileCollections.collectionId,collection.id)).where(eq(collection.id,col));
+    return await db.select({id : file.id}).from(file)
+                .innerJoin(fileCollections,eq(file.id,fileCollections.fileId))
+                .innerJoin(collection,eq(fileCollections.collectionId,collection.id))
+                .where(eq(collection.id,col));
 }
 
 module.exports = { collectionFile, allFiles, directoryFiles };
