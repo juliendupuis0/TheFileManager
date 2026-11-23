@@ -12,6 +12,7 @@ const authMiddleware = require('@/middleware/auth');
 const { s3, initializeStorage } = require("@/config/s3");
 initializeStorage().catch(error => {
 	console.error("Failed to initialize S3 storage:", error.message);
+	process.exit(1);
 });
 
 const app = express();

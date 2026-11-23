@@ -1,6 +1,6 @@
 services:
   seaweedfs:
-    image: chrislusf/seaweedfs:latest
+    image: chrislusf/seaweedfs:4.54
     command: server -dir=/data -s3
     ports:
       - "8333:8333"
