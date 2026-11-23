@@ -10,7 +10,10 @@ const authMiddleware = require('@/middleware/auth');
 //Initialize our S3 bucket, if it doesn't exist, create it.
 //It doesn't depend on anything so we call it first.
 const { s3, initializeStorage } = require("@/config/s3");
-initializeStorage();
+initializeStorage().catch(error => {
+	console.error("Failed to initialize S3 storage:", error.message);
+	process.exit(1);
+});
 
 const app = express();
 
@@ -37,7 +40,7 @@ require('@/config/loadRoutes')(app);
 //|  |_____|_| \_\_| \_\\___/|_| \_\____/   |
 //|_________________________________________|
 app.use((req, res, next) => {
-	res.render("404");
+	res.status(404).render("404");
 });
 
 app.use((err, req, res, next) => {
@@ -55,5 +58,5 @@ app.use((err, req, res, next) => {
 //|______________________________________|
 const PORT = process.env.SERVER_PORT ?? 4000;
 app.listen(PORT, () => {
-	console.log(`App is up and running on port http://localhost:${PORT}`)
+	console.log(`App is up and running on http://localhost:${PORT}`)
 })
