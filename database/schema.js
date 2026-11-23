@@ -8,6 +8,7 @@ const {
 const directory = sqliteTable("directory", {
     id: integer("id").primaryKey({ autoIncrement: true }),
     name: text("name").notNull(),
+    parentId: integer("parentId").references(() => directory.id),
     date: integer("date", { mode: "timestamp" })
         .notNull()
         .$defaultFn(() => new Date()),
@@ -25,7 +26,7 @@ const file = sqliteTable("file", {
     date: integer("date", { mode: "timestamp" })
         .notNull()
         .$defaultFn(() => new Date()),
-    directoryId: integer("directoryId").references(() => directory.id),
+    parentId: integer("parentId").references(() => directory.id),
 });
 
 const versions = sqliteTable("versions", {

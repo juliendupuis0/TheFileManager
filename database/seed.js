@@ -41,9 +41,16 @@ async function seed() {
             .values([
                 { name: "Documents" },
                 { name: "Images" },
-                { name: "Projets" },
-                { name: "Archives" },
                 { name: "Téléchargements" },
+            ])
+            .returning(),
+    );
+    const directoriesenfant = idsByName(
+        await db
+            .insert(directory)
+            .values([
+                { name: "Projets", parentId: directories["Documents"]},
+                { name: "Archives", parentId: directories["Images"]},
             ])
             .returning(),
     );
@@ -69,11 +76,11 @@ async function seed() {
         await db
             .insert(file)
             .values([
-                { name: "rapport", extension: "pdf", directoryId: directories["Documents"] },
-                { name: "budget", extension: "xlsx", directoryId: directories["Documents"] },
-                { name: "photo-vacances", extension: "jpg", directoryId: directories["Images"] },
-                { name: "notes", extension: "txt", directoryId: directories["Projets"] },
-                { name: "presentation", extension: "pptx", directoryId: directories["Projets"] },
+                { name: "rapport", extension: "pdf", parentId: directories["Documents"] },
+                { name: "budget", extension: "xlsx", parentId: directories["Documents"] },
+                { name: "photo-vacances", extension: "jpg", parentId: directories["Images"] },
+                { name: "notes", extension: "txt", parentId: directoriesenfant["Projets"] },
+                { name: "presentation", extension: "pptx", parentId: directoriesenfant["Projets"] },
             ])
             .returning(),
     );
@@ -113,10 +120,10 @@ async function seed() {
     ]);
 
     await db.insert(directoryCollections).values([
-        { directoryId: directories["Projets"], collectionId: collections["Travail"] },
+        { directoryId: directoriesenfant["Projets"], collectionId: collections["Travail"] },
         { directoryId: directories["Images"], collectionId: collections["Favoris"] },
         { directoryId: directories["Documents"], collectionId: collections["Récents"] },
-        { directoryId: directories["Archives"], collectionId: collections["À archiver"] },
+        { directoryId: directoriesenfant["Archives"], collectionId: collections["À archiver"] },
     ]);
 
     console.log("Seed terminée : 5 directories, 5 files, 5 collections, 10 versions.");
