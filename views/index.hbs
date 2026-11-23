@@ -1,3 +1,25 @@
-<div>
-    <p>{{title}}</p>
-</div>
+<main data-file-manager class="mx-auto min-h-[70vh] w-full max-w-5xl px-5 py-10 text-slate-900">
+    <header class="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-semibold">File manager</h1>
+            <p data-location class="mt-1 text-sm text-slate-600">Root</p>
+        </div>
+        <label class="cursor-pointer rounded bg-emerald-700 px-4 py-2 font-semibold text-white hover:bg-emerald-800 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-emerald-700">
+            Upload file
+            <input data-file-input name="files" type="file" class="sr-only">
+        </label>
+    </header>
+
+    <section data-browser data-dragging="false" aria-label="Files and folders"
+        class="relative min-h-96 rounded-lg border border-slate-300 bg-white p-4 transition-colors data-[dragging=true]:border-emerald-600 data-[dragging=true]:bg-emerald-50">
+        <div data-browser-items class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4"></div>
+        <p data-browser-empty class="flex min-h-72 items-center justify-center text-center text-sm text-slate-500">
+            Drop files here to upload to this folder.
+        </p>
+        <p data-load-error class="hidden py-12 text-center text-sm text-rose-700" role="alert"></p>
+    </section>
+
+    <p data-upload-status class="mt-4 min-h-6 text-sm text-slate-700" role="status" aria-live="polite"></p>
+</main>
+
+<script src="/js/main.js"></script>

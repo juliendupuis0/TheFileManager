@@ -5,6 +5,7 @@ require("module-alias/register");
 const express = require("express");
 const hbs = require("hbs");
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 const authMiddleware = require('@/middleware/auth');
 
 //Initialize our S3 bucket, if it doesn't exist, create it.
@@ -24,6 +25,7 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 //We can limit req sizes.
 //app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.json());
+app.use(fileUpload());
 app.use(authMiddleware);
 
 //Load the routes.
