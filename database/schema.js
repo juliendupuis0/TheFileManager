@@ -24,7 +24,6 @@ const file = sqliteTable("file", {
     name: text("name").notNull(),
     extension: text("extension").notNull(),
     date: integer("date", { mode: "timestamp" })
-        .notNull()
         .$defaultFn(() => new Date()),
     parentId: integer("parentId").references(() => directory.id),
 });
